@@ -1,7 +1,8 @@
 {
-  "name": "web-api",
+  "name": "nestjs-fastify",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
