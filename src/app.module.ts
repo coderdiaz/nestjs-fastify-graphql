@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import config from './config';
@@ -11,11 +11,15 @@ import { SampleModule } from './sample/sample.module';
   controllers: [AppController],
   imports: [
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      debug: true,
-      playground: true,
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+        debug: configService.get('graphql').debug,
+        playground: configService.get('graphql').playground,
+      }),
+      inject: [ConfigService],
     }),
     SampleModule,
   ],
