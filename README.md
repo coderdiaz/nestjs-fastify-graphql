@@ -24,7 +24,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript + GraphQL + Fastify repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript + GraphQL (Mercurius) + Fastify repository + SWC.
 
 ## Installation
 
