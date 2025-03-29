@@ -14,7 +14,7 @@ async function bootstrap() {
 
   // Getting configuration from environment
   const configService = app.get(ConfigService);
-  const port = configService.get('port');
+  const port = configService.get<number>('port');
 
   await app.listen(port, '0.0.0.0');
 }
