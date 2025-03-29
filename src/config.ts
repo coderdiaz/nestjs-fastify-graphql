@@ -3,12 +3,13 @@ export type Config = {
   graphql?: {
     graphiql?: boolean;
   };
-}
+};
 
 // Define environment variables
-export default () => ({
-  port: process.env.PORT || 3000,
-  graphql: {
-    graphiql: process.env.GRAPHQL_PLAYGROUND || false,
-  },
-} as Config);
+export default () =>
+  ({
+    port: process.env.PORT || 3000,
+    graphql: {
+      graphiql: process.env.GRAPHQL_PLAYGROUND || false,
+    },
+  }) as Config;

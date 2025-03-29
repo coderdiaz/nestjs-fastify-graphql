@@ -14,7 +14,7 @@ describe('AppController', () => {
     it('should return the health check info', () => {
       const appController = app.get<AppController>(AppController);
       expect(appController.healthCheck()).toStrictEqual({
-        message:'Service is alive',
+        message: 'Service is alive',
         status: 200,
       });
     });
