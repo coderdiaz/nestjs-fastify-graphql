@@ -15,4 +15,8 @@ describe('SampleResolver', () => {
   it('should be defined', () => {
     expect(resolver).toBeDefined();
   });
+
+  it('should return "Hello World" from sayHello', () => {
+    expect(resolver.sayHello()).toBe('Hello World');
+  });
 });
